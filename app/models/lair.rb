@@ -7,4 +7,11 @@ class Lair < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true }
 
   has_one_attached :photo
+
+  def reserved_dates
+    lair = self
+    Reservation.where(lair_id: lair.id).pluck(:start_date, :end_date).map do |start_date, end_date|
+      (start_date..end_date).to_a
+    end.flatten
+  end
 end

@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def new
-    @Reservation = Reservation.new
+    @reservation = Reservation.new
   end
 
   def create
@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     @lair = Lair.find(params[:lair_id])
     @reservation.lair = @lair
     @reservation.user = current_user
-    if @reservation.save!
+    if @reservation.save
       redirect_to lair_path(@lair)
     else
       render :new
