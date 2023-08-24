@@ -4,16 +4,24 @@
   // padding: 10px;
   // margin: 0 auto;
   background-color: rgb(94, 1, 109);
-  width: 420px;
+  width: 414px;
+  height: 314px;
   // margin-left: 80px;
   // margin-bottom: 70px;
-  margin-top: 50px;
+
   border-radius: 5px;
 
+  // padding: 0 auto;
   // max-width: 420px;
-  margin-bottom: 50px;
+
   // padding-bottom: 0px;
   // padding-top: 22px;
+
+  margin-bottom: 50px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #reservation_start_date, #reservation_end_date{

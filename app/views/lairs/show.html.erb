@@ -1,34 +1,26 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="_show.scss">
-  </head>
 <div class="container m-auto" id="container2">
   <div class="row">
-    <div class="col-md-8 rounded">
+    <div class="col-md-6 rounded">
       <div class="container" id="container1">
         <%= cl_image_tag @lair.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
-      <h1><%= @lair.name %></h1>
-      <p><%= @lair.price %> ☠️🍎 per night</p>
-      <p><%= @lair.description %></p>
     </div>
-  </div>
-  <div class="col-md-3 rounded p-auto m-auto" id="reservations">
+    <div class="col-md-3 rounded p-auto m-auto" id="reservations">
     <h2>Make a reservation</h2>
       <%= simple_form_for [@lair, @reservation], data: { controller: "datepicker", dates: @lair.reserved_dates.to_json }  do |f| %>
-      <div class="col-md-8">
         <%= f.input :start_date,
           as: :string,
           input_html: { data: { datepicker_target: "start" } } %>
-      </div>
-      <div class="col-md-8">
         <%= f.input :end_date,
           as: :string,
           input_html: { data: { datepicker_target: "end" } } %>
-      </div>
         <%= f.submit 'Submit', class: 'btn btn-primary' %>
       <% end %>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <h1><%= @lair.name %></h1>
+    <p><%= @lair.price %> ☠️🍎 per night</p>
+    <p><%= @lair.description %></p>
   </div>
 </div>
