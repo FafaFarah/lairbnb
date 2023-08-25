@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stimulus/typed'
   devise_for :users
   root to: "lairs#index"
   resources :lairs, only: %i[show new create] do

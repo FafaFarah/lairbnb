@@ -4,16 +4,24 @@
   // padding: 10px;
   // margin: 0 auto;
   background-color: rgb(94, 1, 109);
-  width: 420px;
+  width: 414px;
+  height: 314px;
   // margin-left: 80px;
   // margin-bottom: 70px;
-  margin-top: 50px;
+
   border-radius: 5px;
 
+  // padding: 0 auto;
   // max-width: 420px;
-  margin-bottom: 50px;
+
   // padding-bottom: 0px;
   // padding-top: 22px;
+
+  margin-bottom: 50px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #reservation_start_date, #reservation_end_date{
@@ -39,4 +47,37 @@ h2 {
   border-radius: 5px;
   // border-color: rgba(255, 0, 179, 0.652);
   border: 2px solid rgba(255, 0, 179, 0.652);
+}
+
+/* =======RESPONSIVE DEVICES============================*/
+
+@media only screen and (max-width: 450px){
+
+  #container1 {
+    max-width: 90svw;
+    max-height: 90svh;
+
+    img {
+      position: relative;
+    }
+
+  }
+
+  #container1 p {
+    margin: auto;
+    justify-content: center;
+  }
+
+  #reservations {
+    position: center, bottom;
+    margin: auto;
+    padding: auto;
+    max-width: 80svw;
+    max-height: 80svh;
+
+  }
+
+  #container2 {
+    margin-bottom: auto;
+  }
 }
