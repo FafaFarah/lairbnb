@@ -1,6 +1,8 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :lair
+  validates :start_date, presence: true
+  validates :end_date, presence: true
   validate :end_date_greater_than_start_date
 
   def end_date_greater_than_start_date
@@ -9,5 +11,5 @@ class Reservation < ApplicationRecord
     end
   end
 
-  
+
 end

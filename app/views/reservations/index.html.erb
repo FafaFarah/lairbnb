@@ -1,65 +1,72 @@
 <div class="container">
-  <h1 class="mx-auto">My reservations</h1>
-  <% index = 1 %>
-
-
-
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Lair's name</th>
-        <th scope="col">Start date</th>
-        <th scope="col">End date</th>
-        <th scope="col">Lair</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @reservations.each do |reservation| %>
-        <tr>
-          <th scope="row"><%= index %></th>
-          <% index += 1 %>
-          <% lair = Lair.find(reservation.lair_id) %>
-          <td><%= lair.name %></td>
-          <td><%= reservation.start_date %></td>
-          <td><%= reservation.end_date %></td>
-          <td><%= link_to "Check the lair", lair_path(lair), class: "btn btn-outline-info btn-sm" %></td>
-          <td>
-            <%= link_to reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-              <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
   <div class="mt-5  d-flex justify-content-between">
-    <h1>My lairs</h1>
-    <p><%= link_to "Create a lair", new_lair_path, class: "btn btn-outline-info" %></h3>
-  </div>
+      <h1>My lairs</h1>
+      <%# <p><%= link_to "Create a lair", new_lair_path, class: "btn btn-outline-info" %>
+    </div>
+    <% lair_index = 1 %>
+    <% if @lairs.empty? %>
+      <p>No current lairs</p>
+    <% else %>
+      <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Lair's name</th>
+              <th scope="col">price</th>
+              <th scope="col">Lair</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @lairs.each do |lair| %>
+            <tr>
+              <th scope="row"><%= lair_index %></th>
+              <% lair_index += 1 %>
+              <td><%= lair.name %></td>
+              <td><%= lair.price %></td>
+              <td><%= link_to "Check the lair", lair_path(lair), class: "btn btn-outline-info btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+</div>
 
-  <table class="table table-dark table-striped">
-    <thead>
+<div class="container">
+  <h1 class="mx-auto">My reservations</h1>
+    <% index = 1 %>
+
+  <% if @reservations.empty? %>
+    <p>No current reservations</p>
+  <% else %>
+    <table class="table table-dark table-striped">
+      <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Lair's name</th>
-          <th scope="col">price</th>
+          <th scope="col">Start date</th>
+          <th scope="col">End date</th>
           <th scope="col">Lair</th>
+          <th scope="col">Delete</th>
         </tr>
-    </thead>
-    <tbody>
-      <% @lairs.each do |lair| %>
-        <tr>
-          <th scope="row"><%= index %></th>
-          <% index += 1 %>
-          <td><%= lair.name %></td>
-          <td><%= lair.price %></td>
-          <td><%= link_to "Check the lair", lair_path(lair), class: "btn btn-outline-info btn-sm" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <th scope="row"><%= index %></th>
+            <% index += 1 %>
+            <% lair = Lair.find(reservation.lair_id) %>
+            <td><%= lair.name %></td>
+            <td><%= reservation.start_date %></td>
+            <td><%= reservation.end_date %></td>
+            <td><%= link_to "Check the lair", lair_path(lair), class: "btn btn-outline-info btn-sm" %></td>
+            <td>
+              <%= link_to reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
