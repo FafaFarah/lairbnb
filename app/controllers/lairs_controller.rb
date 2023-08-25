@@ -16,7 +16,7 @@ class LairsController < ApplicationController
     @lair = Lair.new(lair_params)
     @lair.user = current_user
     if @lair.save!
-      redirect_to root_path
+      redirect_to lair_path(@lair)
     else
       render :new, status: :unprocessable_entity
     end
