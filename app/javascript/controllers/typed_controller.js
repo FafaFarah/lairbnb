@@ -11,20 +11,23 @@ export default class extends Controller {
 
   initializeTyped() {
     new Typed(this.animationTarget, {
-      strings: ["Book your mysterious", "lair now"],
-      typeSpeed: 30,
-      loop: true
+      strings: ["Book your mysterious"],
+      typeSpeed: 50,
+      showCursor: false,
+      fadeOut: true,
+      // loop: true,
     })
 
-      // onComplete: () => {
-    // new Typed(this.animation2Target, {
-    //   strings: ["lair now"],
-    //   typeSpeed: 30,
-    //   loop: true,
-    // })
-      // },
+    new Typed(this.animation2Target, {
+      strings: ["lair now"],
+      typeSpeed: 50,
+      showCursor: false,
+      startDelay: 1700,
+      fadeOut: true,
+      // loop: true,
+    })
   };
-};
+}
 
 
 // initializeTyped() {
