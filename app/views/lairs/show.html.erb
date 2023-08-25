@@ -17,22 +17,24 @@
       <p><%= @lair.description %></p>
     </div>
   <% if user_signed_in? %>
-    <div class="col-md-3 rounded p-auto m-auto" id="reservations">
-      <h2>Make a reservation</h2>
-      <%= simple_form_for [@lair, @reservation], data: { controller: "datepicker", dates: @lair.reserved_dates.to_json }  do |f| %>
-      <div class="col-md-8">
-        <%= f.input :start_date,
-            as: :string,
-            input_html: { data: { datepicker_target: "start" } } %>
+    <% if @lair.user != current_user %>
+      <div class="col-md-3 rounded p-auto m-auto" id="reservations">
+        <h2>Make a reservation</h2>
+        <%= simple_form_for [@lair, @reservation], data: { controller: "datepicker", dates: @lair.reserved_dates.to_json }  do |f| %>
+        <div class="col-md-8">
+          <%= f.input :start_date,
+              as: :string,
+              input_html: { data: { datepicker_target: "start" } } %>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :end_date,
+              as: :string,
+              input_html: { data: { datepicker_target: "end" } } %>
+        </div>
+          <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <% end %>
       </div>
-      <div class="col-md-8">
-        <%= f.input :end_date,
-            as: :string,
-            input_html: { data: { datepicker_target: "end" } } %>
-      </div>
-        <%= f.submit 'Submit', class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+    <% end %>
   <% end %>
   </div>
 </div>
