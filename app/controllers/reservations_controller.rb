@@ -15,8 +15,14 @@ class ReservationsController < ApplicationController
     if @reservation.save!
       redirect_to reservations_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path, status: :see_other
   end
 
   private
